@@ -57,7 +57,7 @@ The system supports customer management, restaurant management, menu handling, o
 - Spring Boot
 - Spring Data JPA
 - Hibernate
-- MySQL
+- PostgreSQL
 - Maven
 - Postman
 
