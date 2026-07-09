@@ -64,11 +64,11 @@ public class MenuItem {
 		this.availability = availability;
 	}
 
-	public Restaurant getRestaurent() {
+	public Restaurant getRestaurant() {
 		return restaurant;
 	}
 
-	public void setRestaurent(Restaurant restaurant) {
+	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
 

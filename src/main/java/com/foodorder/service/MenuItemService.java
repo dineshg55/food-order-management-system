@@ -34,14 +34,14 @@ public class MenuItemService {
 			if(menu.getPrice() == null || menu.getPrice() <= 0)
 			    throw new ValidationException("Price must be greater than 0");
 			
-			if(menu.getRestaurent() == null || menu.getRestaurent().getId() == null)
+			if(menu.getRestaurant() == null || menu.getRestaurant().getId() == null)
 			    throw new ValidationException("Restaurant ID must be provided");
 			
-			Optional<Restaurant> opt = restaurentDao.getById(menu.getRestaurent().getId());
+			Optional<Restaurant> opt = restaurentDao.getById(menu.getRestaurant().getId());
 
 			if(opt.isPresent()) {
 			    Restaurant res = opt.get();   // get actual DB object
-			    menu.setRestaurent(res);      // attach real object
+			    menu.setRestaurant(res);      // attach real object
 			} else {
 			    throw new IdNotFoundException("Restaurant not found");
 			}
@@ -105,6 +105,15 @@ public class MenuItemService {
 
 			if(menuItem.getAvailability() != null)
 			    existing.setAvailability(menuItem.getAvailability());
+			
+			if(menuItem.getRestaurant() != null && menuItem.getRestaurant().getId() != null) {
+			    Optional<Restaurant> opt2 = restaurentDao.getById(menuItem.getRestaurant().getId());
+			    if(opt2.isPresent()) {
+			        existing.setRestaurant(opt2.get());
+			    } else {
+			        throw new IdNotFoundException("Restaurant not found");
+			    }
+			}
 
 			menuItemDao.updateMenuItem(existing);
 			ResponseStructure<MenuItem> response = new ResponseStructure<MenuItem>();
@@ -165,6 +174,4 @@ public class MenuItemService {
 		else
 			throw new ResourceNotFoundException("Resource Not Found");
 	}
-	
-
 }

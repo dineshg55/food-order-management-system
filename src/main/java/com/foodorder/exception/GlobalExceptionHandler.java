@@ -19,7 +19,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		response.setMessage(exp.getMessage());
 		response.setData("FAILURE");
 		
-		return new ResponseEntity<ResponseStructure<String>>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<ResponseStructure<String>>(response, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(ResourceNotFoundException.class)
@@ -30,7 +30,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		response.setMessage(exp.getMessage());
 		response.setData("FAILURE");
 		
-		return new ResponseEntity<ResponseStructure<String>>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<ResponseStructure<String>>(response, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(ResourceAlreadyExistsException.class)
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		response.setMessage(exp.getMessage());
 		response.setData("FAILURE");
 		
-		return new ResponseEntity<ResponseStructure<String>>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<ResponseStructure<String>>(response, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(ValidationException.class)
@@ -52,7 +52,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 		response.setMessage(exp.getMessage());
 		response.setData("FAILURE");
 		
-		return new ResponseEntity<ResponseStructure<String>>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<ResponseStructure<String>>(response, HttpStatus.BAD_REQUEST);
 	}
 
 }
